@@ -1,0 +1,3 @@
+import"./globals.css";import{CartProvider}from"./CartContext";
+export const metadata={metadataBase:new URL("https://luna-fashion.example"),title:{default:"Luna Fashion — Considered Clothing",template:"%s | Luna Fashion"},description:"Modern wardrobe essentials, designed with intention and made to endure.",icons:{icon:"/favicon.svg"},openGraph:{title:"Luna Fashion — Considered Clothing",description:"Quiet confidence, beautifully worn.",images:["/og.png"]},twitter:{card:"summary_large_image",title:"Luna Fashion — Considered Clothing",description:"Quiet confidence, beautifully worn.",images:["/og.png"]}};
+export default function RootLayout({children}){return <html lang="en"><body><CartProvider>{children}</CartProvider></body></html>}

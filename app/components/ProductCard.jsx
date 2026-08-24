@@ -1,0 +1,3 @@
+"use client";
+import Link from"next/link";import{useCart}from"../CartContext";import{money}from"../data";
+export default function ProductCard({product}){const{add}=useCart();return <article className="product-card"><div className="product-image-wrap">{product.tag&&<span className="tag">{product.tag}</span>}<Link href={`/product/${product.id}`}><img src={product.image} alt={product.name}/></Link><button onClick={()=>add(product)} aria-label={`Quick add ${product.name}`}>Quick add</button></div><Link href={`/product/${product.id}`} className="product-info"><div><h3>{product.name}</h3><p>{product.color}</p></div><span>{money(product.price)}</span></Link></article>}

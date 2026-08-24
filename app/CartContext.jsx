@@ -1,0 +1,5 @@
+"use client";
+import {createContext,useContext,useEffect,useState} from "react";
+const CartContext=createContext(null);
+export function CartProvider({children}){const[cart,setCart]=useState([]);const[ready,setReady]=useState(false);useEffect(()=>{try{setCart(JSON.parse(localStorage.getItem("luna-cart"))||[])}catch{}setReady(true)},[]);useEffect(()=>{if(ready)localStorage.setItem("luna-cart",JSON.stringify(cart))},[cart,ready]);const add=(product,size="M",quantity=1)=>setCart(items=>{const key=`${product.id}-${size}`,found=items.find(i=>i.key===key);return found?items.map(i=>i.key===key?{...i,quantity:i.quantity+quantity}:i):[...items,{...product,key,size,quantity}]});const update=(key,quantity)=>setCart(items=>quantity<1?items.filter(i=>i.key!==key):items.map(i=>i.key===key?{...i,quantity}:i));const remove=key=>setCart(items=>items.filter(i=>i.key!==key));return <CartContext.Provider value={{cart,add,update,remove,count:cart.reduce((n,i)=>n+i.quantity,0)}}>{children}</CartContext.Provider>}
+export const useCart=()=>useContext(CartContext);
