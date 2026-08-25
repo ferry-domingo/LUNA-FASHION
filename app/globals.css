@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Italiana&display=swap");
+@import "tailwindcss";
 :root {
   --ink: #1d1c19;
   --cream: #f3f0e9;
